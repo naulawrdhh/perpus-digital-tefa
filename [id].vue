@@ -5,8 +5,8 @@
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body">
-                        <span v-if="buku.cover"><img class="cover" :src="buku.cover" :alt="buku.judul"></span>
-                <span v-else><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.svgrepo.com%2Fsvg%2F508699%2Flandscape-placeholder&psig=AOvVaw2-SWmfk33NzXubPfqn0P16&ust=1714794757874000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCNjln7nK8IUDFQAAAAAdAAAAABAE://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.svgrepo.com%2Fsvg%2F508699%2Flandscape-placeholder&psig=AOvVaw2-SWmfk33NzXubPfqn0P16&ust=1714794757874000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCNjln7nK8IUDFQAAAAAdAAAAABAE" class="cover"></span>
+                        <span v-if="buku.cover"><img :src="buku.cover" :alt="buku.judul" class="cover"></span>
+                <span v-else><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.svgrepo.com%2Fsvg%2F508699%2Flandscape-placeholder&psig=AOvVaw2-SWmfk33NzXubPfqn0P16&ust=1714794757874000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCNjln7nK8IUDFQAAAAAdAAAAABAE://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.svgrepo.com%2Fsvg%2F508699%2Flandscape-placeholder&psig=AOvVaw2-SWmfk33NzXubPfqn0P16&ust=1714794757874000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCNjln7nK8IUDFQAAAAAdAAAAABAE"></span>
                     </div>
                 </div>
             </div>
@@ -19,14 +19,13 @@
                 </ul>
             </div>
         </div>
-        <NuxtLink to="/buku" class="btn btn-light btn-lg rounded-5 px-5">
-         kembali
+        <NuxtLink to="/buku">
+            <button type="submit" class="btn btn-lg rounded-5 px-5">kembali</button>
         </NuxtLink>
     </div>
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
 
 const supabase = useSupabaseClient()
 const route = useRoute()
@@ -35,18 +34,18 @@ const buku = ref([])
 const getBukuByID = async () => {
     const { data, error } = await supabase
     .from('Buku')
-    .select(`*, kategori_buku(*)`)
+    .select(`*, kategori(*)`)
     .eq('id', route.params.id)
-    .single()
-    if(data) buku.value = data
+    if(data) buku.value = data[0]
 }
 
 onMounted(() => {
     getBukuByID()
 })
 </script>
+
 <style scoped>
-.cover{
+.cover {
     width: 100%;
 }
 </style>
