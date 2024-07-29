@@ -97,13 +97,13 @@ onMounted(() => {
   box-shadow: 1px 1px 10px #424242;
 }
 .card.bg-pengunjung {
-  background-image: url('../assets/img/bg-home-kunjungan.jpeg');
+  background-image: url('../assets/img/perpus.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
 }
 .card.bg-buku {
-  background: url(../assets/img/bg-home-cari-buku.jpg) no-repeat center center;
+  background: url('../assets/img/buku.jpeg') no-repeat center center;
   background-size: cover;
 }
 .card-body h2{
