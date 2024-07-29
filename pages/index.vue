@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row my-5">
-      <div class="col-lg-6">
+      <div class="col-lg-6 box">
         <nuxt-link to="../pengunjung/tambah">
           <div class="card bg-pengunjung rounded-5">
             <div class="card-body">
@@ -11,7 +11,7 @@
         </nuxt-link>
       </div>
 
-      <div class="col-lg-6">
+      <div class="col-lg-6 box">
         <nuxt-link to="/buku">
           <div class="card bg-buku rounded-5">
             <div class="card-body">
@@ -29,7 +29,7 @@
 
     <div class="container-fluid">
     <div class="row my-5">
-      <div class="col-lg-6">
+      <div class="col-lg-6 box">
           <div class="card rounded-5 color1">
             <div class="card-body d-flex justify-content-around d-flex align-items-center">
               <nuxt-link to="../pengunjung/">
@@ -38,8 +38,7 @@
               </div>
             </div>
         </div>
-        <div class="col-lg-6">
-          
+        <div class="col-lg-6 box">
             <div class="card rounded-5 color2">
               <div class="card-body d-flex justify-content-around d-flex align-items-center">
                 <nuxt-link to="../buku/">
@@ -106,5 +105,14 @@ onMounted(() => {
 .card.bg-buku {
   background: url(../assets/img/bg-home-cari-buku.jpg) no-repeat center center;
   background-size: cover;
+}
+.card-body h2{
+    color:black;
+}
+.box {
+  width: 50%;
+}
+.box a{
+  text-decoration: none;
 }
 </style>
